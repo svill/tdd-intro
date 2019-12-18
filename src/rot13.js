@@ -1,11 +1,8 @@
 "use strict";
+const ROTATE = 13;
 
 exports.transform = function(input) {
-  let str = "";
-  for (var i = 0; i < input.length; i++) {
-    str += transformChar(input.charAt(i));
-  }
-  return str;
+  return input.split("").map(transformChar).join("");
 };
 
 function transformChar(char) {
@@ -26,13 +23,11 @@ function transformChar(char) {
 }
 
 function transformLeft(char) {
-  const newCode = codeFor(char) + 13;
-  return String.fromCharCode(newCode);
+  return String.fromCharCode(codeFor(char) + ROTATE);
 }
 
 function transformRight(char) {
-  const newCode = codeFor(char) - 13;
-  return String.fromCharCode(newCode);
+  return String.fromCharCode(codeFor(char) - ROTATE);
 }
 
 function codeFor(char) {
